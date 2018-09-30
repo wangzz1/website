@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>翻译</title>
+</head>
+<body>
+<div style="position: absolute;top: 25%;left:25%;">
+<form action="/app/fy" method="get">
+    <span>选择翻译类型：</span>
+    <select name="xuanze" style="width: 100px;height: 30px;">
+        <option value="ZH">汉译英</option>
+        <option value="EN">英译汉</option>
+    </select>
+    <br><br>
+    <textarea rows="6" cols="50" name="content" style="font-size: 20px">
+    {{ words }}
+    </textarea>
+    <button type="submit" style="width: 80px;height: 30px;">翻译</button>
+</form>
+{% if fy_res %}
+    <h3>{{ fy_res }}</h3>
+{% endif %}
+</div>
+</body>
+</html>

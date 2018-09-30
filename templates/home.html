@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小猿社区</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../static/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><span class="navbar-brand">小猿社区</span></li>
+      </ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <span class="navbar-brand">
+            {% if login_res %}
+                欢迎您，{{ login_res }}
+            {% else %}
+                还没有登录哦o(╥﹏╥)o
+            {% endif %}
+        </span>
+            {% if login_res %}
+                <li><a href="/logout">退出</a></li>
+            {% else %}
+                <li><a href="/login" style="color: #c7ddef">登录</a></li>
+                -
+                <li><a href="/registered">注册</a></li>
+            {% endif %}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+{% if login_res %}
+    <div style="border: 2px solid red;border-radius: 10px;border-color: red;font-size:20px;width:100%;">
+        <h3 style="text-align: center; color: red"><b>实用小工具</b></h3>
+        <div class="row">
+            {% for i in all_app[0] %}
+            <div class="col-xs-6 col-md-4">
+                <a href="/app{{ i.url }}" class="thumbnail" target="_blank">
+                    <span style="font-size: 20px;margin=40%width;margin-left: 40%;">{{ i.name }}</span>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <p style="height: 20px"></p>
+    <div style="border: 2px solid red;border-radius: 10px;border-color: #5bc0de;font-size:20px;width:100%;">
+        <h3 style="text-align: center; color: red"><b>多人互动</b></h3>
+        <div class="row">
+            {% for i in all_app[1] %}
+            <div class="col-xs-6 col-md-3 ">
+                <a href="/interaction{{ i.url }}" class="thumbnail" target="_blank">
+                    <span class="" style="font-size: 20px;margin=40%width;margin-left: 40%;">{{ i.name }}</span>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="text-center"><img src="../static/images/学习.gif" ></div>
+{% else %}
+    <b><p class="text-center" style="font-size: 50px;color: peru">登陆后有更多精彩等着你呦~</p></b>
+    <div class="text-center"><img src="../static/images/爱心.gif" ></div>
+{% endif %}
+</body>
+</html>

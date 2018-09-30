@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>空气查询</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-xs-6 col-md-3 ">
+            <form action="/app/kq" method="post">
+                    <select name="name">
+                    {% for city in cities %}
+                    <option>{{ city }}</option>
+                    {% endfor %}
+                    </select>
+
+                <input type="submit" value="点击查询">
+            </form>
+        <h1>{{ pmcity }}</h1>
+        <h1>{{ pmzhiliang }}</h1>
+        <h3>{{ pmyingxiang }}</h3>
+        <h3>{{ pmjianyi }}</h3>
+        </div>
+    </div>
+
+</body>
+</html>
