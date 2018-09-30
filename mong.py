@@ -3,7 +3,8 @@ from pymongo import MongoClient
 conn = MongoClient('127.0.0.1', 27017)
 db = conn.ceshi  #连接ceshi数据库，没有则自动创建
 my_set = db.test_set #使用test_set集合，没有则自动创建
-
+def a():
+    print(1)
 # 添加数据
 # my_set.insert({"username":"xiaonuo","password":"yuanbaincheng","age":8})
 # 或
